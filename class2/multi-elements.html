@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div class="card-header">
+        <h3 class="card-title h1" id="title">Todo App 2</h3>
+
+    </div>
+
+    <ul id="task-list">
+        <li class="task">Görev 1</li>
+        <li class="task">Görev 2</li>
+        <li class="task">Görev 3</li>
+        <li class="task">Görev 4</li>
+    </ul>
+
+
+    <ul id="task-list2">
+        <li class="task2">Ödül 1</li>
+        <li class="task2">Ödül 2</li>
+        <li class="task2">Ödül 3</li>
+        <li class="task2">Ödül 4</li>
+    </ul>
+    <script>
+        let sonuc;
+
+        sonuc = document.getElementsByClassName("task")[0]; //İstenen indekse erişir!
+        sonuc = document.getElementsByClassName("task")[1];
+        sonuc = document.getElementsByClassName("task")[2];
+        sonuc = document.getElementsByClassName("task")[3];
+
+        //let task_list = document.getElementsByClassName("task"); //liste olarak hepsini döndürür.
+
+        ul = document.getElementById("task-list");
+
+        //let task_list= ul.getElementsByTagName("li"); belirlenmiş bir li erişimi
+
+        let task_list = document.querySelectorAll("#task-list li") //bir şeyin altındakine erişim.
+
+        //elemanlar içinde dolaşma
+        for (i = 0; i < task_list.length; i++) {
+            console.log(task_list[i]);
+        }
+        console.log(" ")
+        //elemanlar içinde dolaşma
+        for (let task of task_list) {
+            console.log(task);
+        }
+        //elemanlar içinde dolaşma ve değişiklik yapma
+        console.log(" ")
+
+        for (let task of task_list) {
+            task.style.color = "red";
+            task.style.fontSize = "20px";
+            //task.innerText="Item";
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
