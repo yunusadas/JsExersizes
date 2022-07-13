@@ -1,38 +1,42 @@
-.btn-start, .quiz_box{
+.btn-start,
+.quiz_box {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
-.quiz_box{
+.quiz_box {
     width: 550px;
     opacity: 0;
     pointer-events: none;
 
-    transform: translate(-50%,-50%) scale(0.7);
+    transform: translate(-50%, -50%) scale(0.7);
     transition: all 0.5s ease;
 }
-.quiz_box.active{
+
+.quiz_box.active {
     opacity: 1;
     pointer-events: auto;
-    transform: translate(-50%,-50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
 }
 
-.quiz_box header .title{
+.quiz_box header .title {
     font-size: 20px;
     font-weight: 600;
 }
 
-.quiz_box .question_text{
+.quiz_box .question_text {
     padding-left: 15px;
     font-size: 25px;
     font-weight: 600;
 }
-.quiz_box .option_list{
-    padding: 18px ;
+
+.quiz_box .option_list {
+    padding: 18px;
 }
-.quiz_box .option_list .option{
+
+.quiz_box .option_list .option {
     border: 1px solid #151D3B;
     border-radius: 5px;
     padding: 8px 15px;
@@ -45,29 +49,28 @@
     justify-content: space-between;
 }
 
-.quiz_box .option_list .option:hover{
+.quiz_box .option_list .option:hover {
     color: #112B2C;
     background-color: #FFD33D;
 }
 
-.quiz_box .option_list .option.correct:hover{
+.quiz_box .option_list .option.correct{
     color: #155724;
     background-color: #d4edda;
 }
 
-.quiz_box .option_list .option.incorrect:hover{
+.quiz_box .option_list .option.incorrect{
     color: #721c24;
     background-color: #f8d7da;
 }
 
-.quiz_box .option_list .option.disabled{
+.quiz_box .option_list .option.disabled {
     pointer-events: none;
 }
 
 .quiz_box .next-btn {
     opacity: 0;
     pointer-events: none;
-
     transform: scale(0.9);
     transition: all 0.3s ease;
 }
@@ -75,6 +78,11 @@
 .quiz_box .next-btn.show {
     opacity: 1;
     pointer-events: auto;
-
     transform: scale(1);
+}
+
+.quiz_box footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
