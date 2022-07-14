@@ -3,6 +3,7 @@ const ui = new UI();
 
 ui.btn_start.addEventListener("click", function () {
   if (quiz.sorular.length != quiz.soruIndex) {
+    startTimer(10);
     ui.quiz_box.classList.add("active");
     ui.soruGoster(quiz.soruGetir());
     ui.soruSayisiGoster(quiz.soruIndex + 1, quiz.sorular.length);
@@ -14,21 +15,24 @@ ui.next_btn.addEventListener("click", function () {
   //yazılan css buton aktif edilirse aktif oluyor. Ters style active class olarak ekleniyor!!
   if (quiz.sorular.length != quiz.soruIndex + 1) {
     quiz.soruIndex += 1;
+    clearInterval(count);
+    startTimer(10);
     ui.soruGoster(quiz.soruGetir());
     ui.soruSayisiGoster(quiz.soruIndex + 1, quiz.sorular.length);
     ui.next_btn.classList.remove("show");
   } else {
+    clearInterval(count);
     ui.score_box.classList.add("active");
     ui.quiz_box.classList.remove("active");
     ui.skoruGoster(quiz.sorular.length, quiz.dogruCevapSayisi);
   }
 });
 
-ui.btn_quit.addEventListener("click", function(){
+ui.btn_quit.addEventListener("click", function () {
   window.location.reload();
 });
 
-ui.btn_replay.addEventListener("click", function(){
+ui.btn_replay.addEventListener("click", function () {
   quiz.soruIndex = 0;
   quiz.dogruCevapSayisi = 0;
   ui.btn_start.click();
@@ -37,7 +41,7 @@ ui.btn_replay.addEventListener("click", function(){
 
 function optionSelected(optionList) {
   let cevap = optionList.querySelector("span b").textContent;
-
+  clearInterval(count);
   let soru = quiz.soruGetir();
 
   if (soru.cevabKontrol(cevap)) {
@@ -54,4 +58,32 @@ function optionSelected(optionList) {
   }
 
   ui.next_btn.classList.add("show");
-};
+}
+
+let count;
+function startTimer(time) {
+  count = setInterval(timer, 1000); //bir metodu belirli bir zaman için sürekli çağırıyor!
+
+  function timer() {
+    ui.time_second.textContent = time;
+    time--;
+
+    if (time < 0) {
+      clearInterval(count);
+      ui.time_text.textContent = "Süre Bitti!";
+
+      let cevap = quiz.soruGetir().dogruCevap;
+
+      for (let option of ui.option_list.children) {
+        if (option.querySelector("span b").textContent == cevap) {
+          option.classList.add("correct");
+          option.insertAdjacentHTML("beforeend", ui.correctIcon);
+        }
+
+        option.classList.add("disabled");
+      }
+
+      ui.next_btn.classList.add("show");
+    }
+  }
+}

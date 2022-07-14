@@ -10,23 +10,28 @@ Soru.prototype.cevabKontrol = function (cevap) {
 
 let sorular = [
   new Soru(
-    "1-Java paket yönetimi uygulaması nedir?",
-    { a: "Node.js", b: "nuget", c: "Npm", d: "Java" },
+    "1-Javascript paket yönetimi uygulaması nedir?",
+    { a: "Node.js", b: "Nuget", c: "Npm", d: "JDK" },
     "c"
   ),
   new Soru(
-    "2-.Net paket yönetimi uygulaması nedir?",
-    { a: "Node.js", b: "nuget", c: "Npm" },
+    "2-Hangisi Ali Yılmaz hocanın verdiği derslerden biri değildir?",
+    {
+      a: "Bilgisayar Ağları",
+      b: "Veri Yapıları",
+      c: "Operating Systems",
+      d: "Bilgisayar Mimarisi",
+    },
     "b"
   ),
   new Soru(
-    "3-Python paket yönetimi uygulaması nedir?",
-    { a: "Node.js", b: "nuget", c: "Npm" },
-    "c"
+    "3-Python görüntü işleme kütüphanesi hangisidir?",
+    { a: "Keras", b: "Pandas", c: "Webdriver", d: "OS" },
+    "a"
   ),
   new Soru(
-    "4-Java paket yönetimi uygulaması nedir?",
-    { a: "Node.js", b: "nuget", c: "Npm" },
-    "c"
+    "4-Hangisi Java kütüphanesidir?",
+    { a: "HyberNate", b: "Nugget", c: "CCNA", d: "TensorFlow" },
+    "a"
   ),
 ];
