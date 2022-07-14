@@ -1,8 +1,10 @@
 function UI() {
   this.btn_start = document.querySelector(".btn-start");
+  this.btn_replay = document.querySelector(".btn_replay");
+  this.btn_quit = document.querySelector(".btn_quit");
   this.next_btn = document.querySelector(".next-btn");
   this.quiz_box = document.querySelector(".quiz_box");
-
+  this.score_box = document.querySelector(".score_box");
   this.option_list = document.querySelector(".option_list");
   this.correctIcon = '<div class="icon"><i class="fas fa-check"></i></div>';
   this.incorrectIcon = '<div class="icon"><i class="fas fa-times"></i></div>';
@@ -33,3 +35,8 @@ UI.prototype.soruSayisiGoster = function (soruSirasi, toplamSoru) {
   document.querySelector(".quiz_box .question-index").innerHTML = tag;
 };
 //Soru sırası dinamik getirme bitiş!
+
+UI.prototype.skoruGoster = function (toplamSoru, dogruCevap) {
+  let tag = `Toplam ${toplamSoru} sorudan ${dogruCevap} doğru cevap`;
+  document.querySelector(".score_box .score_text").innerHTML = tag;
+};

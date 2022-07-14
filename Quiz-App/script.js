@@ -18,18 +18,30 @@ ui.next_btn.addEventListener("click", function () {
     ui.soruSayisiGoster(quiz.soruIndex + 1, quiz.sorular.length);
     ui.next_btn.classList.remove("show");
   } else {
-    alert("Quiz Bitti");
-    console.log("Quiz bitti aq!");
+    ui.score_box.classList.add("active");
+    ui.quiz_box.classList.remove("active");
+    ui.skoruGoster(quiz.sorular.length, quiz.dogruCevapSayisi);
   }
+});
+
+ui.btn_quit.addEventListener("click", function(){
+  window.location.reload();
+});
+
+ui.btn_replay.addEventListener("click", function(){
+  quiz.soruIndex = 0;
+  quiz.dogruCevapSayisi = 0;
+  ui.btn_start.click();
+  ui.score_box.classList.remove("active");
 });
 
 function optionSelected(optionList) {
   let cevap = optionList.querySelector("span b").textContent;
-  console.log(cevap);
 
   let soru = quiz.soruGetir();
 
   if (soru.cevabKontrol(cevap)) {
+    quiz.dogruCevapSayisi += 1;
     optionList.classList.add("correct");
     optionList.insertAdjacentHTML("beforeend", ui.correctIcon);
   } else {
@@ -42,4 +54,4 @@ function optionSelected(optionList) {
   }
 
   ui.next_btn.classList.add("show");
-}
+};
