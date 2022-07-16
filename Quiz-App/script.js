@@ -1,9 +1,11 @@
 const quiz = new Quiz(sorular);
 const ui = new UI();
 
+//Başlangıç butonu
 ui.btn_start.addEventListener("click", function () {
   if (quiz.sorular.length != quiz.soruIndex) {
     startTimer(10);
+    startTimerLine();
     ui.quiz_box.classList.add("active");
     ui.soruGoster(quiz.soruGetir());
     ui.soruSayisiGoster(quiz.soruIndex + 1, quiz.sorular.length);
@@ -16,12 +18,15 @@ ui.next_btn.addEventListener("click", function () {
   if (quiz.sorular.length != quiz.soruIndex + 1) {
     quiz.soruIndex += 1;
     clearInterval(count);
-    startTimer(10);
+    clearInterval(counter_line);
+    startTimer(10); 
+    startTimerLine();
     ui.soruGoster(quiz.soruGetir());
     ui.soruSayisiGoster(quiz.soruIndex + 1, quiz.sorular.length);
     ui.next_btn.classList.remove("show");
   } else {
     clearInterval(count);
+    clearInterval(counter_line);
     ui.score_box.classList.add("active");
     ui.quiz_box.classList.remove("active");
     ui.skoruGoster(quiz.sorular.length, quiz.dogruCevapSayisi);
@@ -42,6 +47,7 @@ ui.btn_replay.addEventListener("click", function () {
 function optionSelected(optionList) {
   let cevap = optionList.querySelector("span b").textContent;
   clearInterval(count);
+  clearInterval(counter_line);
   let soru = quiz.soruGetir();
 
   if (soru.cevabKontrol(cevap)) {
@@ -84,6 +90,21 @@ function startTimer(time) {
       }
 
       ui.next_btn.classList.add("show");
+    }
+  }
+}
+
+let counter_line;
+function startTimerLine() {
+  let line_width = 0;
+  counter_line = setInterval(timer, 20);
+
+  function timer() {
+    line_width += 1;
+    ui.time_line.style.width = line_width + "px";
+
+    if(line_width>548){
+      clearInterval(counter_line);
     }
   }
 }
